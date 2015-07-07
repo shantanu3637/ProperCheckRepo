@@ -19,7 +19,7 @@ settings = sublime.load_settings("ProperCheckRepo.sublime-settings")
 counter123 = 0
 
 counter = 1
-repo = Repo("/home/shantanu/Documents/TestingGit")
+repo = Repo(settings.get("REPO_PATH"))
 
 class UserinputCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
@@ -40,7 +40,7 @@ class GitfunctionsCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		
 		#join = os.path.join																											#creates a git.Repo object to represent your repository.
-		temp_dir = REPO_PATH
+		temp_dir = settings.get("REPO_PATH")
 
 		def repo_check(temp_dir):																									#code checks for .git in the folder	
 			try :		
@@ -81,7 +81,7 @@ class myOpener(sublime_plugin.EventListener):
 			sublime.message_dialog(str(repo.git.status()))
 
 			def push_repo():
-				repo = Repo(REPO_PATH)
+				repo = Repo(settings.get("REPO_PATH"))
 				o = repo.remotes.origin
 				o.pull()	
 				o.push()
