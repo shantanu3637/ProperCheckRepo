@@ -102,8 +102,8 @@ class myOpener(sublime_plugin.EventListener):
 			global counter123
 			counter123 += 1 
 			if counter123 == 4 :
-				push_repo()
 				counter123 = 0
+				push_repo()
 				
 
 		
