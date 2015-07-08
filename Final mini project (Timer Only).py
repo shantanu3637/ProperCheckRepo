@@ -104,7 +104,8 @@ class myOpener(sublime_plugin.EventListener):
 			# if counter123 == 4 :
 			# 	counter123 = 0
 			push_repo()
-				
+		else 
+			sublime.message_dialog("Not a git repository")
 
 		
 
