@@ -97,7 +97,7 @@ class myOpener(sublime_plugin.EventListener):
 				o.pull()	
 				o.push()
 				#asdadsas
-				#asda
+				#asdaasddsa
 				#sublime.message_dialog(new_dir)
 				sublime.message_dialog("repository pushed")
 
