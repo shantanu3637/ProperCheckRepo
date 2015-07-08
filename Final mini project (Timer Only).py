@@ -90,10 +90,10 @@ class myOpener(sublime_plugin.EventListener):
 			sublime.message_dialog(str(repo.git.status()))
 
 			def push_repo():
-				repo = Repo(temp_dir)
-				o = repo.remotes.origin
-				o.pull()	
-				o.push()
+				# repo = Repo(temp_dir)
+				# o = repo.remotes.origin
+				# o.pull()	
+				# o.push()
 				sublime.message_dialog("repository pushed")
 
 			# global counter123
