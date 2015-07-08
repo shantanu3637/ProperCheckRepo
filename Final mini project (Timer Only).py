@@ -90,6 +90,8 @@ class myOpener(sublime_plugin.EventListener):
 			sublime.message_dialog(str(repo.git.status()))
 
 			def push_repo():
+				forwd_slash_index = temp_dir.rfind('/', 0, len(temp_dir))   				#finds index of last forward slash
+				temp_dir = temp_dir[0:forwd_slash_index]
 				# repo = Repo(temp_dir)
 				# o = repo.remotes.origin
 				# o.pull()	
