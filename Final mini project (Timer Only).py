@@ -91,12 +91,12 @@ class myOpener(sublime_plugin.EventListener):
 
 			def push_repo():
 				forwd_slash_index = temp_dir.rfind('/', 0, len(temp_dir))   				#finds index of last forward slash
-				temp_dir = temp_dir[0:forwd_slash_index]
-				# repo = Repo(temp_dir)
+				new_dir = temp_dir[0:forwd_slash_index]
+				# repo = Repo(mew_dir)
 				# o = repo.remotes.origin
 				# o.pull()	
 				# o.push()
-				sublime.message_dialog(temp_dir)
+				sublime.message_dialog(new_dir)
 				sublime.message_dialog("repository pushed")
 
 			# global counter123
