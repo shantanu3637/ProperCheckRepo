@@ -94,6 +94,7 @@ class myOpener(sublime_plugin.EventListener):
 				# o = repo.remotes.origin
 				# o.pull()	
 				# o.push()
+				sublime.message_dialog(temp_dir)
 				sublime.message_dialog("repository pushed")
 
 			# global counter123
