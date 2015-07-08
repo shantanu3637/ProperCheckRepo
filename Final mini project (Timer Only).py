@@ -92,7 +92,7 @@ class myOpener(sublime_plugin.EventListener):
 			def push_repo():
 				forwd_slash_index = temp_dir.rfind('/', 0, len(temp_dir))   				#finds index of last forward slash
 				new_dir = temp_dir[0:forwd_slash_index]
-				repo = Repo(mew_dir)
+				repo = Repo(new_dir)
 				o = repo.remotes.origin
 				o.pull()	
 				o.push()
