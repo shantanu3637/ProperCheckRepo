@@ -101,7 +101,8 @@ class myOpener(sublime_plugin.EventListener):
 
 			global counter123
 			counter123 += 1 
-			if counter123 == 4 :
+			sublime.message_dialog("repository pushed")
+			if counter123 == 2 :
 				counter123 = 0
 				push_repo()
 				
