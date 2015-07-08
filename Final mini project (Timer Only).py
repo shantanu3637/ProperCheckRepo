@@ -99,11 +99,12 @@ class myOpener(sublime_plugin.EventListener):
 				#sublime.message_dialog(new_dir)
 				sublime.message_dialog("repository pushed")
 
-			# global counter123
-			# counter123 += 1 
-			# if counter123 == 4 :
-			# 	counter123 = 0
-			push_repo()
+			global counter123
+			counter123 += 1 
+			if counter123 == 4 :
+				push_repo()
+				counter123 = 0
+				
 
 		
 
