@@ -4,7 +4,7 @@ import os
 import sys
 
 current_working_directory = os.getcwd() 																			#current working directory 
-sys.path.append(current_working_directory + "/lib/python3.4/site-packages")		#Tells sublime python interpreter where modules are store
+sys.path.append("/home/shubham/.config/sublime-text-3/Packages/User" + "/lib/python3.4/site-packages")		#Tells sublime python interpreter where modules are store
 
 from git import *	
 
@@ -19,28 +19,35 @@ settings = sublime.load_settings("ProperCheckRepo.sublime-settings")
 counter123 = 0
 
 counter = 1
-repo = Repo(settings.get("REPO_PATH"))
+#repo = Repo(settings.get("REPO_PATH"))
 
-class UserinputCommand(sublime_plugin.TextCommand):
-	def run(self, edit):
-		#temp_dir = "/home/kahlil/TestingGit"
-		#join = os.path.join
-		#sublime.message_dialog("control is here")
-		sublime.message_dialog(str(settings.get("X_SAVES_Push")))
-# 		self.view.window().show_input_panel("Push after number of commits", "Enter number here", self.on_done, None, None)																										#creates a git.Repo object to represent your repository.
+# class UserinputCommand(sublime_plugin.TextCommand):
+# 	def run(self, edit):
+# 		#temp_dir = "/home/kahlil/TestingGit"
+# 		#join = os.path.join
+# 		#sublime.message_dialog("control is here")
+# 		sublime.message_dialog(str(settings.get("X_SAVES_Push")))
+# # 		self.view.window().show_input_panel("Push after number of commits", "Enter number here", self.on_done, None, None)																										#creates a git.Repo object to represent your repository.
 		
 
-# 	def on_done(self, user_input):
-# 		sublime.message_dialog("Push after "+ X_SAVES_Push + " commits")
-# 		global commit_before_push
-# 		commit_before_push = int(user_input)
+# # 	def on_done(self, user_input):
+# # 		sublime.message_dialog("Push after "+ X_SAVES_Push + " commits")
+# # 		global commit_before_push
+# # 		commit_before_push = int(user_input)
 
 
-class GitfunctionsCommand(sublime_plugin.TextCommand):
-	def run(self, edit):
+# class GitfunctionsCommand(sublime_plugin.TextCommand):
+# 	def run(self, edit):
 		
-		#join = os.path.join																											#creates a git.Repo object to represent your repository.
-		temp_dir = settings.get("REPO_PATH")
+# 		#join = os.path.join																											#creates a git.Repo object to represent your repository.
+		
+
+class myOpener(sublime_plugin.EventListener):		
+
+	def on_post_save(self,view):
+
+
+		temp_dir = str(view.file_name())
 
 		def repo_check(temp_dir):																									#code checks for .git in the folder	
 			try :		
@@ -64,9 +71,11 @@ class GitfunctionsCommand(sublime_plugin.TextCommand):
 					# else :																															#recursive call to repo_check with upper file level
 					# 	repo_check(temp_dir)
 
-class myOpener(sublime_plugin.EventListener):		
 
-	def on_post_save(self,view):
+
+		repo_check(temp_dir)													#function call to repo_check
+		
+
 		global counter
 		if counter == 1:
 			global repo
@@ -81,23 +90,22 @@ class myOpener(sublime_plugin.EventListener):
 			sublime.message_dialog(str(repo.git.status()))
 
 			def push_repo():
-				repo = Repo(settings.get("REPO_PATH"))
+				repo = Repo(temp_dir)
 				o = repo.remotes.origin
 				o.pull()	
 				o.push()
 				sublime.message_dialog("repository pushed")
 
-			global counter123
-			counter123 += 1 
-			if counter123 == commit_before_push :
-				counter123 =0
-				push_repo()
+			# global counter123
+			# counter123 += 1 
+			# if counter123 == 4 :
+			# 	counter123 = 0
+			push_repo()
 				
 
 		
 
 
-		repo_check(temp_dir)													#function call to repo_check
 		
 		#sublime.set_timeout(on_post_save, Y_SECONDS_COMMIT * 1000)
 
